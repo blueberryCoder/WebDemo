@@ -35,4 +35,27 @@
             </result>
         </action>
     </package>
+    
+    <package name="params" namespace="/" extends="struts-default">
+        <action name="params" class="com.blueberry.ssh.actions.TestParamsAction">
+            <result name="success">/params/TestParams.jsp</result>
+            <param name="EnglishParam">English</param>
+            <param name="ChineseParam">Chinese</param>
+            <param name="FranceParam">France</param>
+        </action>
+    </package>
+
+    <package name="download" namespace="/download" extends="struts-default">
+        <action name="download" class="com.blueberry.ssh.actions.DownloadAction">
+            <param name="path">/download/DownLoad.jsp</param>
+            <result name="success" type="stream">
+                <param name="contentType">text/plain</param>
+                <param name="inputName">downloadFile</param>
+                <param name="contentDisposition">attachment;filename="DownLoad.jsp"</param>
+                <param name="bufferSize">102400</param>
+            </result>
+
+        </action>
+
+    </package>
 </struts>

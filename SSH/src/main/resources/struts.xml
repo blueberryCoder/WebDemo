@@ -54,8 +54,15 @@
                 <param name="contentDisposition">attachment;filename="DownLoad.jsp"</param>
                 <param name="bufferSize">102400</param>
             </result>
-
         </action>
-
+    </package>
+    
+    <package name="json" namespace="/" extends="struts-default,json-default">
+        <action name="json" class="com.blueberry.ssh.actions.JSONDataAction">
+            <result name="success" type="json"></result>
+        </action>
+        <action name="getJson" class="com.blueberry.ssh.actions.JSONAction">
+            <result type="json"></result>
+        </action>
     </package>
 </struts>

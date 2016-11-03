@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Sofware Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd"
+        >
+<struts>
+    <constant name="struts.action.extension" value="action"></constant>
+    <package name="user" namespace="/user" extends="struts-default,json-default">
+        <action name="login" class="com.blueberry.weibo.user.actions.LoginAction">
+            <result name="success" type="json"></result>
+            <result name="input">../login/login.jsp</result>
+        </action>
+        <action name="register" class="com.blueberry.weibo.user.actions.RegisterAction">
+            <result name="success">
+                ../login/login.jsp
+            </result>
+            <result name="input">
+                ../login/register.jsp
+            </result>
+        </action>
+    </package>
+</struts>

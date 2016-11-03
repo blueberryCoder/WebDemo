@@ -5,3 +5,4 @@ CREATE TABLE customer (
 	create_date datetime NOT NULL,
 	PRIMARY KEY (customer_id)
 )ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+

@@ -1,7 +1,6 @@
 /**
  * Created by Administrator on 2016/11/3.
  */
-
 function setCookie(name, value) {
     var exp = new Date();
     exp.setTime(exp.getTime() + 60 * 60 * 1000);//存储一小时

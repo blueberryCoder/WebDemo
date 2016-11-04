@@ -13,14 +13,14 @@
     <link href="../css/common.css" rel="stylesheet" type="text/css">
     <link href="../css/home/home.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../js/jsencrypt.min.js"></script>
+    <script type="text/javascript" src="../js/requeryKey.js"></script>
     <script type="text/javascript" src="../js/register.js"></script>
-    <script type="text/javascript" src="../js/security.js"></script>
 </head>
 <body>
 
 <script type="text/javascript">
     //请求加密
-    loadSecurity2Cookie("../Security");
+    loadPublicKey2Cookie("../Security");
 </script>
 
 <s:if test="getActionErrors().size()>0">

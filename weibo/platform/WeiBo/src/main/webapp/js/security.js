@@ -2,7 +2,6 @@
  * Created by Administrator on 2016/11/3.
  */
 
-
 function loadSecurity2Cookie(url) {
     var xmlHttp;
     if (window.XMLHttpRequest) {

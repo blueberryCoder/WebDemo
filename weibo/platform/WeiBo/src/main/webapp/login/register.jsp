@@ -12,6 +12,7 @@
     <title>注册</title>
     <link href="../css/common.css" rel="stylesheet" type="text/css">
     <link href="../css/home/home.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../js/jsencrypt.min.js"></script>
     <script type="text/javascript" src="../js/register.js"></script>
     <script type="text/javascript" src="../js/security.js"></script>
 </head>

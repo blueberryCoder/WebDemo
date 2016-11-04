@@ -41,16 +41,27 @@ function checkRegisterForm(form) {
         alert("密码不一致")
         return false;
     }
-    
-    form.password.value = encryption(form.password.value);
-    form.passwordAgain.value = encryption(form.passwordAgain.value);
-    
+
+    form.password.value = encrypt(form.password.value);
+    form.passwordAgain.value = encrypt(form.passwordAgain.value);
+
     return true;
 
 }
 
-function encryption(org) {
-   var code = getCookie("security");
-    console.log("security:"+code);
-    return org+code;
+function encrypt(org) {
+    var publicKey = getCookie("security");
+    // console.log("security:"+code);
+    var encrypted = encypt(org,publicKey);
+    
+    return encrypted;
+}
+
+function encypt(org,publicKey) {
+    var crypt = new JSEncrypt();
+    crypt.setPublicKey(publicKey);
+    var encrypted = crypt.encrypt(org);
+    
+    crypt.decrypt()
+    return encrypted;
 }

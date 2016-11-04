@@ -12,8 +12,59 @@
     <url>org.apache.maven</url>
 
     <properties>
+        <project.build.sourceEncording>UTF-8</project.build.sourceEncording>
+        <project.deploy>deploy</project.deploy>
+        <project.tomcat.version>8.0.36</project.tomcat.version>
         <spring.version>4.3.3.RELEASE</spring.version>
     </properties>
+
+    <build>
+        <plugins>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<version>3.6.0</version>-->
+                <!--<configuration>-->
+                    <!--<source>1.7</source>-->
+                    <!--<source>1.7</source>-->
+                    <!--<eccoding>UTF-8</eccoding>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:8080/weibo</url>
+                    <username>username</username>
+                    <password>password</password>
+                    <path>/${project.artifactId}</path>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>
+                        **/*.xml
+                    </include>
+                    <include>
+                        **/*.properties
+                    </include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <finalName>weibo</finalName>
+    </build>
 
     <dependencies>
         <dependency>
@@ -108,27 +159,4 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>
-                        **/*.xml
-                    </include>
-                    <include>
-                        **/*.properties
-                    </include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-        </resources>
-        <finalName>weibo</finalName>
-    </build>
 </project>

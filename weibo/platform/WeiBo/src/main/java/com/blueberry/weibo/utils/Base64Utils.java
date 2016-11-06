@@ -1,7 +1,7 @@
 package com.blueberry.weibo.utils;
 
 
-import com.sun.org.apache.xml.internal.security.utils.Base64;
+import org.bouncycastle.util.encoders.Base64;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

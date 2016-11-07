@@ -4,6 +4,7 @@ import com.blueberry.weibo.user.bean.User;
 import com.blueberry.weibo.user.exceptions.LoginException;
 import com.blueberry.weibo.user.exceptions.RegisterException;
 
+
 /**
  * Created by Administrator on 2016/11/2.
  */

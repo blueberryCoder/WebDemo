@@ -1,12 +1,14 @@
 package com.blueberry.weibo.user.bean;
 
 import com.blueberry.weibo.user.enums.UserType;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
 /**
  * Created by Administrator on 2016/11/2.
  */
+
 public class User implements Serializable {
     private long uid;
     private int gender;

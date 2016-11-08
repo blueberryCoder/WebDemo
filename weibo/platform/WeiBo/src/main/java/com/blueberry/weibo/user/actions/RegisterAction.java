@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import org.apache.commons.io.Charsets;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by Administrator on 2016/11/1.
@@ -20,6 +21,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
     private Logger logger = Logger.getLogger(RegisterAction.class);
 
     private User user = new User();
+
     private UserBo userBo;
 
     public UserBo getUserBo() {

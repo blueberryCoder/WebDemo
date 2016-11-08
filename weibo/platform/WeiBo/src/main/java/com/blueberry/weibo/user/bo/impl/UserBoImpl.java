@@ -5,11 +5,15 @@ import com.blueberry.weibo.user.bo.UserBo;
 import com.blueberry.weibo.user.dao.UserDao;
 import com.blueberry.weibo.user.exceptions.LoginException;
 import com.blueberry.weibo.user.exceptions.RegisterException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Administrator on 2016/11/2.
  */
+
 public class UserBoImpl implements UserBo {
+
     private UserDao userDao;
 
     public void setUserDao(UserDao userDao) {

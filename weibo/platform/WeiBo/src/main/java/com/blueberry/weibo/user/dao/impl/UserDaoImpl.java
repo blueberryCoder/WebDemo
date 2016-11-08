@@ -5,8 +5,10 @@ import com.blueberry.weibo.user.dao.UserDao;
 import com.blueberry.weibo.user.exceptions.LoginException;
 import com.blueberry.weibo.user.exceptions.RegisterException;
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -15,10 +17,9 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/11/2.
  */
+
 @Transactional
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
-
-    private Logger LOG = Logger.getLogger(UserDaoImpl.class);
 
     public boolean register(User user) throws RegisterException {
         try {

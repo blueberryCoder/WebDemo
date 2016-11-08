@@ -5,7 +5,6 @@ import com.blueberry.weibo.user.bo.UserBo;
 import com.blueberry.weibo.user.exceptions.LoginException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * Created by Administrator on 2016/11/1.

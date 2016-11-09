@@ -18,17 +18,18 @@ public class UserAspect {
 
     private static Logger LOG = Logger.getLogger(UserAspect.class);
 
-    @Pointcut(" execution (* com.blueberry.weibo.user.dao.impl.UserDaoImpl.register(..))")
-    public void resisterUser() {
+    @Pointcut(" execution (* com.blueberry.weibo.user.dao.impl.UserDaoImpl.register(com.blueberry.weibo.user.bean.User)) && args(u)")
+    public void resisterUser(User u) {
     }
 
-    @Before("resisterUser()")
-    public void beforeRegisterUser() {
-        LOG.info("beforeRegisterUser,user.username:" );
+    @Before("resisterUser(u)")
+    public void beforeRegisterUser(User u) {
+
+        LOG.info("beforeRegisterUser,user.username:" + u.getName());
     }
 
-    @After("resisterUser()")
-    public void afterRegisterUser() {
-        LOG.info("afterRegister,user.username:");
+    @After("resisterUser(u)")
+    public void afterRegisterUser(User u) {
+        LOG.info("afterRegister,user.username:" + u.getName());
     }
 }

@@ -24,7 +24,6 @@ public class UserAspect {
 
     @Before("resisterUser(u)")
     public void beforeRegisterUser(User u) {
-
         LOG.info("beforeRegisterUser,user.username:" + u.getName());
     }
 

@@ -1,6 +1,5 @@
 package com.blueberry.weibo.common;
 
-import com.blueberry.weibo.servlet.SecurityServlet;
 import com.blueberry.weibo.utils.RSAUtils;
 
 import java.util.Map;

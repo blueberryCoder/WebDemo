@@ -19,17 +19,7 @@
     <script src="js/register.js" type="text/javascript"></script>
 </head>
 <body>
-
 <h1><a href="login/login.jsp">登陆</a></h1>
 <h1><a href="${pageContext.request.contextPath}/user/register.action">注册</a></h1>
-<p id="encypted"></p>
-<script type="text/javascript">
-
-    var str = encypt('123456', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC5A/' +
-            'TPEmOQYgT2po11qvjeBUPEdqUEz1Z7MeHH7KI2p74pYK8RsvYngy1cH/wnMXmsf+Wb3tmlqNGa7atW8wlpSfXX' +
-            'QV9bFECPEVRnESo8xtN7ZAlJFcdRvBVgfVwC3m9HWpVvKnd9NREXIcg5NHh57q7u' +
-            'lsGCZJ2VOJm9EIgFEwIDAQAB');
-    document.getElementById("encypted").innerHTML=''+str;
-</script>
 </body>
 </html>

@@ -8,8 +8,7 @@ public class HomeControllerTest  {
 
 
     public void testHomePage(){
-        
-        HomeController controller = new HomeController();
 
+        HomeController controller = new HomeController();
     }
 }

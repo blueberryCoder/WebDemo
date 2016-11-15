@@ -45,7 +45,6 @@ public class SpitterController {
         spittleRepository.save(spitter);
         return "redirect:/spitter/" + spitter.getUsername();
     }
-
     @RequestMapping(value = "/{username}")
     public String showSpitterProfile(@PathVariable String username, Model model) {
         Spitter spitter = spittleRepository.findByUsername(username);

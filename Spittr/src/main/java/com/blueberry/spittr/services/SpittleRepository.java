@@ -1,7 +1,6 @@
 package com.blueberry.spittr.services;
 
 import com.blueberry.spittr.beans.Spitter;
-import com.blueberry.spittr.beans.Spittle;
 
 import java.util.List;
 
@@ -10,7 +9,6 @@ import java.util.List;
  */
 
 public interface SpittleRepository {
-    List<Spittle> findSpittles(long max, int count);
 
     void save(Spitter spittle);
 

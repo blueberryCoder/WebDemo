@@ -1,10 +1,7 @@
 package com.blueberry.spittr;
 
 
-import com.blueberry.spittr.conf.JspConfig;
-import com.blueberry.spittr.conf.RootConfig;
-import com.blueberry.spittr.conf.TileConfig;
-import com.blueberry.spittr.conf.WebConfig;
+import com.blueberry.spittr.conf.*;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -20,7 +17,7 @@ public class SpittrWebAppInitializer extends AbstractAnnotationConfigDispatcherS
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{
-                WebConfig.class, JspConfig.class
+                WebConfig.class, ThymeleafConfig.class
         };
     }
 

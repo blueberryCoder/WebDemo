@@ -29,8 +29,6 @@ import java.util.Locale;
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 
-
-
     /**
      * 国际化资源文件,实现可以是{@link ResourceBundleMessageSource},
      * {@link org.springframework.context.support.ReloadableResourceBundleMessageSource}。

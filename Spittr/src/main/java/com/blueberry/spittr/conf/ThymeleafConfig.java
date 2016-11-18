@@ -27,7 +27,9 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter implements Applicat
 
     @Bean
     public ViewResolver viewResolver(TemplateEngine templateEngine) {
-        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+        ThymeleafViewResolver viewResolver
+
+                = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine);
         return viewResolver;
     }

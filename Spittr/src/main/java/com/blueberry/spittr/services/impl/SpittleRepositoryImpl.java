@@ -22,7 +22,7 @@ public class SpittleRepositoryImpl implements SpittleRepository {
     @Override
     public Spitter findByUsername(String username) {
         Spitter spitter  = new Spitter();
-        spitter.setUsername("testUserName");
+        spitter.setUsername(username);
         return spitter;
     }
 }

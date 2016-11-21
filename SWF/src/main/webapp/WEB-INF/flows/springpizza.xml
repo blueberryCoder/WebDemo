@@ -1,0 +1,18 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+        http://www.springframework.org/schema/webflow
+         http://www.springframework.org/schema/webflow-config/spring-webflow.xsd"
+      start-state="identityCustomer"
+>
+    <var name="order" class="com.blueberry.pizza.beans.Order"></var>
+    <subflow-state id="identityCustomer" subflow="pizza/customer">
+        <output name="customer" value="order.customer"></output>
+        <transition on="customerReady" to="buildOrder"></transition>
+    </subflow-state>
+
+    <subflow-state id="buildOrder" subflow="pizza/buildOrder">
+        <input name="order" value="order"></input>
+        <transition on="orderCreated"></transition>
+    </subflow-state>
+</flow>

@@ -4,6 +4,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.MediaType;
@@ -17,6 +18,12 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
+import org.springframework.webflow.context.ExternalContext;
+import org.springframework.webflow.core.FlowException;
+import org.springframework.webflow.core.collection.MutableAttributeMap;
+import org.springframework.webflow.executor.FlowExecutionResult;
+import org.springframework.webflow.executor.FlowExecutor;
+import org.springframework.webflow.mvc.servlet.FlowHandlerAdapter;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -30,6 +37,7 @@ import java.util.Locale;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.blueberry.spittr")
+@ImportResource("classpath:/spring/flow-config.xml")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 
@@ -61,6 +69,17 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 //        CommonsMultipartResolver multipartResolver =
 //                new CommonsMultipartResolver();
 //        multipartResolver.setUploadTempDir(new FileSystemResource("/temp/spittr/uploads"));
+        new FlowHandlerAdapter().setFlowExecutor(new FlowExecutor() {
+            @Override
+            public FlowExecutionResult launchExecution(String s, MutableAttributeMap<?> mutableAttributeMap, ExternalContext externalContext) throws FlowException {
+                return null;
+            }
+
+            @Override
+            public FlowExecutionResult resumeExecution(String s, ExternalContext externalContext) throws FlowException {
+                return null;
+            }
+        });
         return new StandardServletMultipartResolver();
     }
 
@@ -79,4 +98,5 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
+
 }

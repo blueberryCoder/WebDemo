@@ -3,6 +3,7 @@ package com.blueberry.spittr.controller;
 import com.blueberry.spittr.beans.Spitter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,10 +26,8 @@ public class FlashController {
         return "flash";
     }
 
-    @ResponseBody
     @RequestMapping(value = "/out",method = RequestMethod.GET)
-    public String out(RedirectAttributes redirectAttributes){
-        Spitter spitter = (Spitter) redirectAttributes.getFlashAttributes().get("spitter");
-        return spitter.getUsername();
+    public String out(Model redirectAttributes){
+        return "out";
     };
 }

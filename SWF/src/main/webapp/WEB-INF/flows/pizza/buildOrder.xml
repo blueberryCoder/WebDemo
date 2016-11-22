@@ -24,7 +24,7 @@
         </on-entry>
 
         <transition on="addPizza" to="showOrder">
-            <evaluate expression="orderService.addPizza(flashScope.pizza)"></evaluate>
+            <evaluate expression="orderService.addPizza(order,flowScope.pizza)"></evaluate>
         </transition>
 
         <transition on="cancel" to="showOrder"></transition>

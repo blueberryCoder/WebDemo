@@ -13,6 +13,26 @@
 
     <subflow-state id="buildOrder" subflow="pizza/buildOrder">
         <input name="order" value="order"></input>
-        <transition on="orderCreated"></transition>
+        <transition on="orderCreated" to="takePayment"></transition>
     </subflow-state>
+
+    <subflow-state id="takePayment" subflow="pizza/payment">
+        <input name="order" value="order"></input>
+        <transition on="paymentTaken" to="saveOrder"></transition>
+    </subflow-state>
+
+    <action-state id="saveOrder">
+        <evaluate expression="pizzaService.saveOrder(order)"></evaluate>
+        <transition to="thankCustomer"></transition>
+    </action-state>
+
+    <view-state id="thankCustomer">
+        <transition to="endState"></transition>
+    </view-state>
+
+    <end-state id="endState"></end-state>
+
+    <global-transitions>
+        <transition on="cancel" to="endState"></transition>
+    </global-transitions>
 </flow>

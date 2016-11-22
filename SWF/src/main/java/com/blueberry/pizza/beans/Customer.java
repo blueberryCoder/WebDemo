@@ -59,4 +59,14 @@ public class Customer implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "username='" + username + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address='" + address + '\'' +
+                ", zipCode=" + zipCode +
+                '}';
+    }
 }

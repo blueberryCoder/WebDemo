@@ -23,7 +23,8 @@
                             path="/WEB-INF/flows/pizza/customer.xml"></flow:flow-location>
         <flow:flow-location id="pizza/buildOrder"
         path="/WEB-INF/flows/pizza/buildOrder.xml"></flow:flow-location>
-
+        <flow:flow-location id="pizza/payment"
+        path="/WEB-INF/flows/pizza/payment.xml"></flow:flow-location>
     </flow:flow-registry>
 
     <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">

@@ -51,4 +51,13 @@ public class Order implements Serializable {
     public void setPayment(Payment payment) {
         this.payment = payment;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "customer=" + customer +
+                ", pizzas=" + pizzas +
+                ", payment=" + payment +
+                '}';
+    }
 }

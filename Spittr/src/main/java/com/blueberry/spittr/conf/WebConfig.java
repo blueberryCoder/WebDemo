@@ -10,6 +10,7 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
@@ -27,9 +28,7 @@ import org.springframework.webflow.mvc.servlet.FlowHandlerAdapter;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Administrator on 2016/11/9.
@@ -37,7 +36,6 @@ import java.util.Locale;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.blueberry.spittr")
-@ImportResource("classpath:/spring/flow-config.xml")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 

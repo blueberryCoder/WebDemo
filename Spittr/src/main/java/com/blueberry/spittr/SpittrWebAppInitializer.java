@@ -60,7 +60,7 @@ public class SpittrWebAppInitializer
             tempDir.mkdirs();
         }
         tempPath = tempDir.getAbsolutePath();
-    logger.info(tempPath);
+        logger.info(tempPath);
     }
 
     @Override

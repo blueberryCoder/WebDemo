@@ -31,7 +31,7 @@ public class SpitterUserService implements UserDetailsService {
             List<GrantedAuthority> authorityList
                     = new ArrayList<>();
             authorityList.add(new SimpleGrantedAuthority("ROLE_SPITTER"));
-            return new User(spitter.getUsername(), spitter.getPassword(), authorityList);
+            return new User(username, spitter.getPassword(), authorityList);
         }
 
         throw new UsernameNotFoundException("User '" + username + "' not found.");

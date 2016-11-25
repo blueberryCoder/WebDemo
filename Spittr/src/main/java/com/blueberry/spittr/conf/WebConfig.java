@@ -15,9 +15,7 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.HandlerAdapter;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.webflow.context.ExternalContext;
 import org.springframework.webflow.core.FlowException;
@@ -97,4 +95,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         configurer.enable();
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/res/**")
+                .addResourceLocations("/resources/")
+                .setCachePeriod(31556926);
+    }
 }

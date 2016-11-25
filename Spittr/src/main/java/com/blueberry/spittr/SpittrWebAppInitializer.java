@@ -11,6 +11,8 @@ import java.io.File;
 
 /**
  * Created by Administrator on 2016/11/9.
+ *
+ * http://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#jc-logout-handler
  */
 public class SpittrWebAppInitializer
         extends AbstractAnnotationConfigDispatcherServletInitializer {

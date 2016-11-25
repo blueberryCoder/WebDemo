@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
 
 /**
@@ -56,15 +57,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/spitters/me").hasAuthority("ROLE_SPITTER")
                 .antMatchers("/spitters/ttt").hasRole("SPITTER")
                 .antMatchers("/spitters/xxx").access("hasRole('ROLE_SPITTER') and hasIpAddress('192.168.1.2')")
-                .antMatchers(HttpMethod.POST, "/spittles")
-                .authenticated()
+                .antMatchers(HttpMethod.POST, "/spittles").authenticated()
+                .antMatchers("/show").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .requiresChannel()
                 .antMatchers("/spitter/form").requiresSecure()/*需要Https*/
                 .and()
                 .formLogin()
+                .loginPage("/spitter/login")
+//                .and()
+//                .httpBasic()
+//                .realmName("Spittr")
+                .and()
+                .rememberMe()
+                .tokenValiditySeconds(2419200) //默认是2周有效，这里指定在四周有效
+                .key("spittrKey")        // 默认为SpringSecured
+//                .rememberMeServices()
+                .rememberMeParameter("remember-me")
+//                .tokenRepository(new JdbcTokenRepositoryImpl())
+                .and()
+                .logout()
+                .logoutUrl("/signOut")
+                .logoutSuccessUrl("/")
+
+
         ;
+//        禁用CSRF功能，默认是开启的
+//        http.csrf().disable();
     }
 
     /**

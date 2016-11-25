@@ -12,7 +12,7 @@ public class SpitterRepositoryImpl implements SpitterRepository {
     @Override
     public Spitter findByUsername(String username) {
         Spitter spitter = new Spitter();
-        spitter.setUsername("blueberry");
+//        spitter.setUsername("blueberry");
         spitter.setPassword("password");
         return spitter;
     }

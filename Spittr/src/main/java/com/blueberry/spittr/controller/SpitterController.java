@@ -5,6 +5,10 @@ import com.blueberry.spittr.beans.Spitter;
 import com.blueberry.spittr.services.SpittleRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -12,8 +16,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import sun.text.normalizer.ICUBinary;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -35,6 +42,11 @@ public class SpitterController {
         this.spittleRepository = spittleRepository;
     }
 
+    @RequestMapping(value = "/login", method = GET)
+    public String login() {
+        return "login";
+    }
+
     @RequestMapping(value = "/register", method = GET)
     public String showRegistrationForm(Model model) {
         model.addAttribute(new Spitter());
@@ -43,12 +55,12 @@ public class SpitterController {
 
     @RequestMapping(value = "/register", method = POST)
     public String processRegistration(Model model, @Valid Spitter spitter, Errors errors) {
-        if(errors.hasErrors()){
+        if (errors.hasErrors()) {
             return "registerForm";
         }
         spittleRepository.save(spitter);
         //通过url模板进行重定向
-        model.addAttribute("username",spitter.getUsername());
+        model.addAttribute("username", spitter.getUsername());
         return "redirect:/spitter/{username}";
     }
 

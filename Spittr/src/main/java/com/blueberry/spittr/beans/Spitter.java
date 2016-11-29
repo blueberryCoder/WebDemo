@@ -4,14 +4,20 @@ package com.blueberry.spittr.beans;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
 /**
  * Created by Administrator on 2016/11/14.
+ *
+ * http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html
  */
+@Entity
+@Table(name = "spitter")
 public class Spitter {
+    @Id
     private Long id;
 
     @NotNull
@@ -29,6 +35,18 @@ public class Spitter {
 
     public Long getId() {
         return id;
+
+    }
+
+    public Spitter() {
+    }
+
+    public Spitter(Long id, String username, String password, String firstName, String lastName) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public void setId(Long id) {

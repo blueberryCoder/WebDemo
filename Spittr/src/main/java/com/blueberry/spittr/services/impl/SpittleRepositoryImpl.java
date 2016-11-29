@@ -1,12 +1,8 @@
 package com.blueberry.spittr.services.impl;
 
 import com.blueberry.spittr.beans.Spitter;
-import com.blueberry.spittr.services.SpittleRepository;
+import com.blueberry.spittr.dao.SpittleRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Administrator on 2016/11/11.

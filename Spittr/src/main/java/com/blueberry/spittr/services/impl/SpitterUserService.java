@@ -1,7 +1,7 @@
 package com.blueberry.spittr.services.impl;
 
 import com.blueberry.spittr.beans.Spitter;
-import com.blueberry.spittr.services.SpitterRepository;
+import com.blueberry.spittr.dao.SpitterRepository;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

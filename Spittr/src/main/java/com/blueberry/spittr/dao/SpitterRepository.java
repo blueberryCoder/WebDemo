@@ -1,4 +1,4 @@
-package com.blueberry.spittr.services;
+package com.blueberry.spittr.dao;
 
 import com.blueberry.spittr.beans.Spitter;
 

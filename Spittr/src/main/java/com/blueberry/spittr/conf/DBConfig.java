@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
@@ -16,12 +17,14 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.jndi.JndiObjectFactoryBean;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.sql.DataSource;
+import javax.transaction.TransactionManager;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -35,6 +38,9 @@ import java.util.logging.Logger;
  */
 @PropertySource("classpath:/conf/database.properties")
 @Configuration
+@EnableJpaRepositories(basePackages = "com.blueberry.spittr.dao",
+        entityManagerFactoryRef = "entityManagerFactoryBean",
+        transactionManagerRef = "transactionManager")
 public class DBConfig {
 
 
@@ -134,7 +140,6 @@ public class DBConfig {
 ////        sfb.setAnnotatedClasses(new );
 //        return sfb;
 //    }
-
     private void setDatabaseDialect(DataSource dataSource, Properties properties) {
         if (dataSource instanceof EmbeddedDatabase) {
             properties.setProperty("dialect", "org.hibernate.dialect.H2Dialect");
@@ -169,7 +174,7 @@ public class DBConfig {
                 = new LocalContainerEntityManagerFactoryBean();
         emfb.setDataSource(dataSource);
         emfb.setJpaVendorAdapter(jpaVendorAdapter);
-        emfb.setPackagesToScan("com.blueberry.beans");
+        emfb.setPackagesToScan("com.blueberry.spittr.beans");
         return emfb;
     }
 
@@ -195,5 +200,8 @@ public class DBConfig {
         return adapter;
     }
 
-
+    @Bean
+    public JpaTransactionManager transactionManager() {
+        return new JpaTransactionManager();
+    }
 }

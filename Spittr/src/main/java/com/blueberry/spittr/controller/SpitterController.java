@@ -3,6 +3,7 @@ package com.blueberry.spittr.controller;
 import com.blueberry.spittr.beans.Spitter;
 
 import com.blueberry.spittr.dao.SpittleRepository;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,7 +50,7 @@ public class SpitterController {
         if (errors.hasErrors()) {
             return "registerForm";
         }
-        spittleRepository.save(spitter);
+        spittleRepository.addSpitter(spitter);
         //通过url模板进行重定向
         model.addAttribute("username", spitter.getUsername());
         return "redirect:/spitter/{username}";
@@ -59,6 +60,7 @@ public class SpitterController {
     public String showSpitterProfile(@PathVariable String username, Model model) {
         Spitter spitter = spittleRepository.findByUsername(username);
         model.addAttribute(spitter);
+        logger.info(ReflectionToStringBuilder.toString(spitter));
         return "profile";
     }
 }

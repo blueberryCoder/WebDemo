@@ -1,17 +1,11 @@
 package com.blueberry.spittr.dao.impl;
 
 import com.blueberry.spittr.beans.Spitter;
-import com.blueberry.spittr.services.SpitterRepository;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.query.criteria.internal.CriteriaDeleteImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.blueberry.spittr.dao.SpitterRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**

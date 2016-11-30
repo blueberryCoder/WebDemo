@@ -7,7 +7,7 @@
 
     <context-param>
         <param-name>spring.profiles.default</param-name>
-        <param-value>qa</param-value>
+        <param-value>development</param-value>
     </context-param>
 
     <!--设置跟上下文配置文件-->

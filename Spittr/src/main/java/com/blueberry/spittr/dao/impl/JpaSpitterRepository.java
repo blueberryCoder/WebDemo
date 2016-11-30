@@ -2,7 +2,7 @@ package com.blueberry.spittr.dao.impl;
 
 import com.blueberry.spittr.beans.Spitter;
 import com.blueberry.spittr.beans.Spitter_;
-import com.blueberry.spittr.services.SpitterRepository;
+import com.blueberry.spittr.dao.SpitterRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,16 +26,11 @@ public class JpaSpitterRepository implements SpitterRepository {
 
     @Override
     public Spitter findByUsername(String username) {
-
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Spitter> query = cb.createQuery(Spitter.class);
-
         Root<Spitter> root = query.from(Spitter.class);
-        query.select(root);
-
         Predicate userNameIs = cb.equal(root.get(Spitter_.username), username);
         query.where(userNameIs);
-
         TypedQuery<Spitter> typeQuery = em.createQuery(query);
         return typeQuery.getResultList().get(0);
 

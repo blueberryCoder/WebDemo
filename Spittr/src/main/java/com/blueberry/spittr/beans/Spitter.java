@@ -18,6 +18,7 @@ import javax.validation.constraints.Size;
 @Table(name = "spitter")
 public class Spitter {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull

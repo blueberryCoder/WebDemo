@@ -1,11 +1,9 @@
 package com.blueberry.spittr.dao.impl;
 
 import com.blueberry.spittr.beans.Spitter;
-import com.blueberry.spittr.services.SpitterRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.blueberry.spittr.dao.SpitterRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcOperations;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;

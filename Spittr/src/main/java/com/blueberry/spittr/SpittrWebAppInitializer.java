@@ -29,7 +29,7 @@ public class SpittrWebAppInitializer
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{
-                WebConfig.class, JspConfig.class,DBConfig.class
+                WebConfig.class, JspConfig.class,DBConfig.class,CacheConfig.class
         };
     }
 

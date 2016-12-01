@@ -13,6 +13,8 @@ public class SpitterControllerTest {
 
     @Test
     public void shouldShowPagedSpittles() throws Exception {
+
+
     }
 
 }

@@ -29,13 +29,14 @@ public class SpittrWebAppInitializer
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{
-                WebConfig.class, JspConfig.class,DBConfig.class,CacheConfig.class
+                WebConfig.class, JspConfig.class,DBConfig.class,CacheConfig.class,
+                RpcConfig.class
         };
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/"};
+        return new String[]{"/","*.service"};
     }
 
     /**

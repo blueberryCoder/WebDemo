@@ -83,7 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         ;
 //        禁用CSRF功能，默认是开启的
-//        http.csrf().disable();
+        http.csrf().disable();
     }
 
     /**

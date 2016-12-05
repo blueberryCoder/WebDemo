@@ -29,10 +29,16 @@ public class SpittrWebAppInitializer
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{
-                WebConfig.class, JspConfig.class,DBConfig.class,CacheConfig.class,
+                WebConfig.class,
+                JspConfig.class,
+//                NegotiatingConfig.class,
+                DBConfig.class,
+                CacheConfig.class,
                 RpcConfig.class
         };
     }
+
+
 
     @Override
     protected String[] getServletMappings() {
@@ -68,8 +74,6 @@ public class SpittrWebAppInitializer
 
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-
-        //暂时写一个绝对路径
         registration.setMultipartConfig(new MultipartConfigElement(tempPath));
     }
 

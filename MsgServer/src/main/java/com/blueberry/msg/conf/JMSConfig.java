@@ -1,12 +1,13 @@
-package com.blueberry.msg_server.conf;
+package com.blueberry.msg.conf;
 
-import com.blueberry.msg_server.bean.Spitter;
+import com.blueberry.msg.bean.Spitter;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.apache.activemq.spring.ActiveMQConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.jms.core.JmsOperations;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
@@ -19,6 +20,8 @@ import java.util.Map;
  * Created by Administrator on 12/6/2016.
  */
 @Configuration
+@ImportResource("classpath:/spring/appContext.xml")
+
 public class JMSConfig {
 
     /**
@@ -71,15 +74,26 @@ public class JMSConfig {
     public MappingJackson2MessageConverter mappingJackson2MessageConverter(){
         MappingJackson2MessageConverter mappingJackson2MessageConverter =
                 new MappingJackson2MessageConverter();
-
         Map<String,Class<?>> map = new HashMap<>();
         map.put("type",Spitter.class);
-
         mappingJackson2MessageConverter.setTypeIdMappings(map);
         mappingJackson2MessageConverter.setTypeIdPropertyName("type");
-
-
         return mappingJackson2MessageConverter;
     }
+
+//    @Bean
+//    public MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory,
+//                                                             MappingJackson2MessageConverter
+//                                                                     mappingJackson2MessageConverter,
+//                                                             MessageListener messageListener){
+//        DefaultMessageListenerContainer messageListenerContainer =
+//                new DefaultMessageListenerContainer();
+//        messageListenerContainer.setConnectionFactory(connectionFactory);
+//        messageListenerContainer.setMessageConverter(mappingJackson2MessageConverter);
+//        messageListenerContainer.setMessageListener(messageListener);
+//        messageListenerContainer.setDestinationName("spitter.queue");
+//
+//        return messageListenerContainer;
+//    }
 
 }

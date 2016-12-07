@@ -1,10 +1,10 @@
-package com.blueberry.msg_server;
+package com.blueberry.msg;
 
 
-import com.blueberry.msg_server.conf.JMSConfig;
-import com.blueberry.msg_server.conf.JspConfig;
-import com.blueberry.msg_server.conf.RootConfig;
-import com.blueberry.msg_server.conf.WebConfig;
+import com.blueberry.msg.conf.JMSConfig;
+import com.blueberry.msg.conf.JspConfig;
+import com.blueberry.msg.conf.RootConfig;
+import com.blueberry.msg.conf.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MsgServerInit extends AbstractAnnotationConfigDispatcherServletInitializer {

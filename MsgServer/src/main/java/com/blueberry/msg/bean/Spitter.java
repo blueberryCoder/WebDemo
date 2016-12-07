@@ -1,4 +1,4 @@
-package com.blueberry.msg_server.bean;
+package com.blueberry.msg.bean;
 
 import java.io.Serializable;
 

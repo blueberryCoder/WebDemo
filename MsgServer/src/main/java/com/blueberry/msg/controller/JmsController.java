@@ -1,8 +1,8 @@
-package com.blueberry.msg_server.controller;
+package com.blueberry.msg.controller;
 
-import com.blueberry.msg_server.bean.Spitter;
-import com.blueberry.msg_server.service.ReceiverService;
-import com.blueberry.msg_server.service.SendService;
+import com.blueberry.msg.bean.Spitter;
+import com.blueberry.msg.service.ReceiverService;
+import com.blueberry.msg.service.SendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,4 +44,5 @@ public class JmsController {
     public Spitter receive() {
         return receiverService.receive();
     }
+
 }

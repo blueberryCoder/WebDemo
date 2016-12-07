@@ -1,4 +1,4 @@
-package com.blueberry.msg_server.conf;
+package com.blueberry.msg.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

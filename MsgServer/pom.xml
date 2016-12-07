@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.blueberry</groupId>
-    <artifactId>msg-server</artifactId>
+    <artifactId>msg</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>msg-server</name>
+    <name>msg</name>
     <packaging>war</packaging>
     <url>org.apache.maven</url>
 
@@ -75,7 +75,7 @@
             </resource>
         </resources>
 
-        <finalName>msg-server</finalName>
+        <finalName>msg</finalName>
     </build>
 
     <!--<repositories>-->

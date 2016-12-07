@@ -1,6 +1,6 @@
-package com.blueberry.msg_server.service;
+package com.blueberry.msg.service;
 
-import com.blueberry.msg_server.bean.Spitter;
+import com.blueberry.msg.bean.Spitter;
 
 /**
  * Created by Administrator on 12/6/2016.

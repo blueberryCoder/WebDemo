@@ -1,14 +1,10 @@
-package com.blueberry.msg_server.service.impl;
+package com.blueberry.msg.service.impl;
 
-import com.blueberry.msg_server.bean.Spitter;
-import com.blueberry.msg_server.service.SendService;
+import com.blueberry.msg.bean.Spitter;
+import com.blueberry.msg.service.SendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsOperations;
-import org.springframework.jms.core.MessagePostProcessor;
 import org.springframework.stereotype.Service;
-
-import javax.jms.JMSException;
-import javax.jms.Message;
 
 /**
  * Created by Administrator on 12/6/2016.

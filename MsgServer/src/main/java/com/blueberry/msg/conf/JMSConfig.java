@@ -1,15 +1,18 @@
 package com.blueberry.msg.conf;
 
 import com.blueberry.msg.bean.Spitter;
+import com.blueberry.msg.service.JmsService;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.apache.activemq.spring.ActiveMQConnectionFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.jms.core.JmsOperations;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.remoting.JmsInvokerServiceExporter;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 
 import javax.jms.ConnectionFactory;
@@ -20,7 +23,7 @@ import java.util.Map;
  * Created by Administrator on 12/6/2016.
  */
 @Configuration
-@ImportResource("classpath:/spring/appContext.xml")
+@ImportResource("classpath:/spring/jmsContext.xml")
 
 public class JMSConfig {
 
@@ -74,12 +77,13 @@ public class JMSConfig {
     public MappingJackson2MessageConverter mappingJackson2MessageConverter(){
         MappingJackson2MessageConverter mappingJackson2MessageConverter =
                 new MappingJackson2MessageConverter();
-        Map<String,Class<?>> map = new HashMap<>();
+        Map<String,Class<?>> map = new HashMap<String,Class<?>>();
         map.put("type",Spitter.class);
         mappingJackson2MessageConverter.setTypeIdMappings(map);
         mappingJackson2MessageConverter.setTypeIdPropertyName("type");
         return mappingJackson2MessageConverter;
     }
+
 
 //    @Bean
 //    public MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory,
@@ -95,5 +99,35 @@ public class JMSConfig {
 //
 //        return messageListenerContainer;
 //    }
+
+
+    /**
+     * 导出基于jms的服务,须在在jms Listener中引用
+     * @param jmsService
+     * @return
+     */
+    @Bean
+
+    public JmsInvokerServiceExporter jmsInvokerServiceExporter( JmsService jmsService){
+        JmsInvokerServiceExporter jmsInvokerServiceExporter = new JmsInvokerServiceExporter();
+        jmsInvokerServiceExporter.setService(jmsService);
+        jmsInvokerServiceExporter.setServiceInterface(JmsService.class);
+        return jmsInvokerServiceExporter;
+    }
+
+//    /**
+//     * 使用jms的服务
+//     * @param connectionFactory
+//     * @return
+//     */
+//    @Bean
+//    public JmsInvokerProxyFactoryBean jmsInvokerClientInterceptor(ConnectionFactory connectionFactory){
+//        JmsInvokerProxyFactoryBean jmsInvokerProxyFactoryBean = new JmsInvokerProxyFactoryBean();
+//        jmsInvokerProxyFactoryBean.setConnectionFactory(connectionFactory);
+//        jmsInvokerProxyFactoryBean.setServiceInterface(JmsService.class);
+//        jmsInvokerProxyFactoryBean.setQueueName("spitter.queue");
+//        return jmsInvokerProxyFactoryBean;
+//    }
+
 
 }

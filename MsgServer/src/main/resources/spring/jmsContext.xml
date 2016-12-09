@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/cache"
+       xmlns:flow="http://www.springframework.org/schema/webflow-config"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/jms
+        http://www.springframework.org/schema/jms/spring-jms.xsd
+        http://activemq.apache.org/schema/core
+        http://activemq.apache.org/schema/core/activemq-core.xsd
+                 http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/cache
+         http://www.springframework.org/schema/cache/spring-cache.xsd
+         http://www.springframework.org/schema/webflow-config
+         http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd"
+>
+
+    <bean id="spitterHandler" class="com.blueberry.msg.listener.SpitterAlterHandler"
+
+    >
+
+    </bean>
+
+    <jms:listener-container connection-factory="activeMQConnectionFactory"
+        message-converter="mappingJackson2MessageConverter"
+
+    >
+
+        <!--<jms:listener destination="spitter.queue"-->
+                      <!--ref="spitterHandler" method="handleSpitterAlter"-->
+        <!--&gt;</jms:listener>-->
+        <jms:listener destination="spitter.queue" ref="jmsInvokerServiceExporter"></jms:listener>
+    </jms:listener-container>
+</beans>

@@ -1,10 +1,7 @@
 package com.blueberry.msg;
 
 
-import com.blueberry.msg.conf.JMSConfig;
-import com.blueberry.msg.conf.JspConfig;
-import com.blueberry.msg.conf.RootConfig;
-import com.blueberry.msg.conf.WebConfig;
+import com.blueberry.msg.conf.*;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MsgServerInit extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -16,7 +13,11 @@ public class MsgServerInit extends AbstractAnnotationConfigDispatcherServletInit
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{WebConfig.class, JMSConfig.class, JspConfig.class};
+        return new Class<?>[]{WebConfig.class,
+                JMSConfig.class,
+                JspConfig.class,
+                AMQPConfig.class
+        };
     }
 
     @Override

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/rabbit
+                http://www.springframework.org/schema/rabbit/spring-rabbit-1.6.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+    >
+        <property name="location" value="classpath:/rabbitMQ.properties">
+        </property>
+    </bean>
+
+    <rabbit:connection-factory id="connectionFactory"
+                               host="${rabbitmq.host}"
+                               port="${rabbitmq.port}"
+                               username="${rabbitmq.username}"
+                               password="${rabbitmq.password}"
+    />
+
+
+    <rabbit:admin id="admin" connection-factory="connectionFactory"/>
+
+    <rabbit:queue name="spitter.queue.1"></rabbit:queue>
+    <rabbit:queue name="spitter.queue.2"></rabbit:queue>
+    <rabbit:queue name="spitter.queue.3"></rabbit:queue>
+
+    <rabbit:fanout-exchange name="spitter.fanout">
+        <rabbit:bindings>
+            <rabbit:binding queue="spitter.queue.1"></rabbit:binding>
+            <rabbit:binding queue="spitter.queue.2"></rabbit:binding>
+            <rabbit:binding queue="spitter.queue.3"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:fanout-exchange>
+
+    <bean id="jackson2JsonMessageConverter"
+          class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter"></bean>
+
+    <rabbit:template id="rabbitTemplate" connection-factory="connectionFactory"
+                     message-converter="jackson2JsonMessageConverter"
+                     exchange="spitter.fanout"
+                     routing-key="spitter.queue"
+    ></rabbit:template>
+
+<bean id="amqpListener" class="com.blueberry.msg.listener.AmqpListener"></bean>
+    <rabbit:listener-container connection-factory="connectionFactory"
+        message-converter="jackson2JsonMessageConverter"
+    >
+        <rabbit:listener ref="amqpListener" queues="spitter.queue.1"
+                         method="handle" ></rabbit:listener>
+
+    </rabbit:listener-container>
+</beans>

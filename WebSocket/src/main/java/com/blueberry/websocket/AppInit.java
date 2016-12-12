@@ -3,6 +3,7 @@ package com.blueberry.websocket;
 import com.blueberry.websocket.conf.RootConfig;
 import com.blueberry.websocket.conf.WebConfig;
 import com.blueberry.websocket.conf.WebSocketConfig;
+import com.blueberry.websocket.conf.WebSocketStompConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -16,7 +17,12 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{WebConfig.class, WebSocketConfig.class};
+        return new Class<?>[]{
+                WebConfig.class,
+//                WebSocketConfig.class
+                WebSocketStompConfig.class
+
+        };
     }
 
     @Override

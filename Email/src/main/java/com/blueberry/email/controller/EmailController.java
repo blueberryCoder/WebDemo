@@ -47,7 +47,6 @@ public class EmailController {
 
 
         helper.setText("<html>" +
-                "<meta http-equiv=\"Content-Type\" content=\"text/css;charset=utf-8\"/></head>" +
                 "<body>图片: <img src='cid:image'/> </body>" +
                 "</html>",true);
 
